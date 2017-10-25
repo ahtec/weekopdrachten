@@ -41,10 +41,11 @@ switch ($bewerking) {
     default:
         echo "Onbekende bewerking: " . $bewerking;
         
-        echo "<br>U kunt gebruiken: optellen aftrekken vermenigvuldigen delen";
+        echo "<br>U kunt gebruiken: optellen aftrekken vermenigvuldigen delen machtverheffen wortel";
         break;
 }
 echo "<br>";
+
 echo "<br>";
 
 function optellen($var1, $var2) {
