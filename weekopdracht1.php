@@ -82,7 +82,11 @@ function wortel($var1, $var2) {
 }
 
 function rest($var1, $var2) {
+    if ($var2 <= 0 || $var1 <= 0) {
+        echo "Beide  argumenten moeten  positef zijn voor modulo berekening";
+    } else {
     echo "De rest na deling van " . $var1 . " gedeeld door " . $var2 . " is : " . ($var1 % $var2);
+    }
 }
 
 ?>
