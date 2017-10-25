@@ -52,7 +52,6 @@ function optellen($var1, $var2) {
 }
 
 function aftrekken($var1, $var2) {
-
     echo "Het getal " . $var1 . " verminderd met  " . $var2 . " is:  " . ($var1 - $var2);
 }
 
@@ -79,7 +78,7 @@ function wortel($var1, $var2) {
 
 function rest($var1, $var2) {
 //    $var3 = 1 / $var2;
-    echo "De rest na deling vav " . $var1 . " gedeeld door " . $var2 . " is : " . ($var1 % $var2);
+    echo "De rest na deling van " . $var1 . " gedeeld door " . $var2 . " is : " . ($var1 % $var2);
 }
 
 ?>
