@@ -32,16 +32,12 @@ switch ($bewerking) {
     case "machtverheffen":
         machtverheffen($eerste, $tweede);
         break;
-
     case "wortel":
         wortel($eerste, $tweede);
         break;
-
     case "rest":
         rest($eerste, $tweede);
         break;
-
-
     default:
         echo "Onbekende bewerking: " . $bewerking;
 
