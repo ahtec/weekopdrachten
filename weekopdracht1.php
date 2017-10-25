@@ -46,12 +46,15 @@ switch ($bewerking) {
     case "kegeloppervlakte":
         kegeloppervlakte($eerste, $tweede);
         break;
+case "kegelinhoud":
+        kegelinhoud($eerste, $tweede);
+        break;
 
 
     default:
         echo "Onbekende bewerking: " . $bewerking;
         echo "<br>U kunt gebruiken: optellen aftrekken vermenigvuldigen delen machtverheffen wortel";
-        echo" rest logaritme kegeloppervlakte";
+        echo" rest logaritme kegeloppervlakte kegelinhoud";
         break;
 }
 echo "<br>";
@@ -112,6 +115,11 @@ function logaritme($var1, $var2) {
 function kegeloppervlakte($straal, $hoogte) {
     $uitkomst = pi() * ( $straal ** 2) +   pi() * $straal  *  ($straal**2 + $hoogte**2 )**0.5  ;
     echo "De oppervlakte van de kegel met straal  " . $straal . " en hoogte " . $hoogte . " is " . $uitkomst;
+}
+
+function kegelinhoud($straal, $hoogte) {
+    $uitkomst = pi() * ( $straal ** 2) * $hoogte / 3  ;
+    echo "De inhoud van de kegel met straal  " . $straal . " en hoogte " . $hoogte . " is " . $uitkomst;
 }
 
 ?>
