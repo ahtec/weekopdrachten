@@ -1,5 +1,4 @@
 <?php
-
 /* * ****************************************************
  *  Dit php programma gebruikt 3 parameters
  *  Gerard Doets 25 oktober 2017
@@ -40,7 +39,6 @@ switch ($bewerking) {
         break;
     default:
         echo "Onbekende bewerking: " . $bewerking;
-
         echo "<br>U kunt gebruiken: optellen aftrekken vermenigvuldigen delen machtverheffen wortel";
         echo" rest";
         break;
