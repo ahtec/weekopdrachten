@@ -46,7 +46,7 @@ switch ($bewerking) {
     case "kegeloppervlakte":
         kegeloppervlakte($eerste, $tweede);
         break;
-case "kegelinhoud":
+    case "kegelinhoud":
         kegelinhoud($eerste, $tweede);
         break;
 
@@ -113,12 +113,12 @@ function logaritme($var1, $var2) {
 }
 
 function kegeloppervlakte($straal, $hoogte) {
-    $uitkomst = pi() * ( $straal ** 2) +   pi() * $straal  *  ($straal**2 + $hoogte**2 )**0.5  ;
+    $uitkomst = pi() * ( $straal ** 2) + pi() * $straal * ($straal ** 2 + $hoogte ** 2 ) ** 0.5;
     echo "De oppervlakte van de kegel met straal  " . $straal . " en hoogte " . $hoogte . " is " . $uitkomst;
 }
 
 function kegelinhoud($straal, $hoogte) {
-    $uitkomst = pi() * ( $straal ** 2) * $hoogte / 3  ;
+    $uitkomst = pi() * ( $straal ** 2) * $hoogte / 3;
     echo "De inhoud van de kegel met straal  " . $straal . " en hoogte " . $hoogte . " is " . $uitkomst;
 }
 
