@@ -1,4 +1,5 @@
 <?php
+
 /* * ****************************************************
  *  Dit php programma gebruikt 3 parameters
  *  Gerard Doets 25 oktober 2017
@@ -72,12 +73,15 @@ function machtverheffen($var1, $var2) {
 }
 
 function wortel($var1, $var2) {
-    $var3 = 1 / $var2;
-    echo "De " . $var2 . "macht wortel van " . $var1 . " is : " . ($var1 ** $var3);
+    if ($var2 <= 0 || $var1 <= 0) {
+        echo "Beide  argumenten moeten  positef zijn voor worteltrekken";
+    } else {
+        $var3 = 1 / $var2;
+        echo "De " . $var2 . "macht wortel van " . $var1 . " is : " . ($var1 ** $var3);
+    }
 }
 
 function rest($var1, $var2) {
-//    $var3 = 1 / $var2;
     echo "De rest na deling van " . $var1 . " gedeeld door " . $var2 . " is : " . ($var1 % $var2);
 }
 
