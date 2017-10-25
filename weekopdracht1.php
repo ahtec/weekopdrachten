@@ -13,6 +13,9 @@ $bewerking = $_GET['bewerking'];
 
 $eerste = $_GET['eerste'];
 $tweede = $_GET['tweede'];
+// 10 tot de 3e is 1000  dus 10log1000 = 3  
+
+//echo log(1000, 10);
 
 echo "<br>";
 echo "<br>";
@@ -38,13 +41,13 @@ switch ($bewerking) {
     case "rest":
         rest($eerste, $tweede);
         break;
-    case "log":
+    case "logaritme":
         logaritme($eerste, $tweede);
         break;
     default:
         echo "Onbekende bewerking: " . $bewerking;
         echo "<br>U kunt gebruiken: optellen aftrekken vermenigvuldigen delen machtverheffen wortel";
-        echo" rest";
+        echo" rest logaritme";
         break;
 }
 echo "<br>";
@@ -94,9 +97,11 @@ function rest($var1, $var2) {
 
 function logaritme($var1, $var2) {
     if ($var2 <= 0 || $var1 <= 0) {
-        echo "Beide  argumenten moeten  positef zijn voor modulo berekening";
+        echo "Beide  argumenten moeten  positef zijn voor logaritme berekening";
     } else {
-    echo "De rest na deling van " . $var1 . " gedeeld door " . $var2 . " is : " . ($var1 % $var2);
+        $uitkomst = log($var2, $var1);
+        
+    echo "Ik moet  " . $var1 . " verheffen tot " . $uitkomst . " om  " . $var2." te krijgen";
     }
 }
 
