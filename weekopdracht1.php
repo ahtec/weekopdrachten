@@ -50,11 +50,19 @@ switch ($bewerking) {
         kegelinhoud($eerste, $tweede);
         break;
 
+    case "faculteit":
+        echo faculteit($eerste);
+        break;
+    case "faculteitOverzicht":
+        for ($i = 2; $i <= 170; $i++)
+            echo "  <br>" . $i . "======" . faculteit($i);
+        break;
+
 
     default:
         echo "Onbekende bewerking: " . $bewerking;
         echo "<br>U kunt gebruiken: optellen aftrekken vermenigvuldigen delen machtverheffen wortel";
-        echo" rest logaritme kegeloppervlakte kegelinhoud";
+        echo" rest logaritme kegeloppervlakte kegelinhoud  faculteit";
         break;
 }
 echo "<br>";
@@ -120,6 +128,16 @@ function kegeloppervlakte($straal, $hoogte) {
 function kegelinhoud($straal, $hoogte) {
     $uitkomst = pi() * ( $straal ** 2) * $hoogte / 3;
     echo "De inhoud van de kegel met straal  " . $straal . " en hoogte " . $hoogte . " is " . $uitkomst;
+}
+
+function faculteit($var1) {
+
+    if ($var1 < 2) {
+        return 1;
+    } else {
+
+        return $var1 * faculteit($var1 - 1);
+    }
 }
 
 ?>
