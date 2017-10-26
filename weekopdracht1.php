@@ -70,7 +70,6 @@
             break;
     }
     echo "<br>";
-
     echo "<br>";
 
     function optellen($var1, $var2) {
