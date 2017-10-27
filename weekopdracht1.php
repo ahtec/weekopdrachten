@@ -79,8 +79,10 @@
     echo "<br>";
 
     function optellen($var1, $var2) {
-        $aanroep = debug_backtrace(1, 2);
-        echo "<br>Het getal " . $var1 . "  " . $aanroep[0]["function"] . " met  " . $var2 . " is:  " . ($var1 + $var2);
+//        $aanroep = debug_backtrace(1, 2);
+        $uitkomst = $var1 + $var2;
+        printUitkomst($var1,$var2,$uitkomst);
+//        echo "<br>Het getal " . $var1 . "  " . $aanroep[0]["function"] . " met  " . $var2 . " is:  " . ($var1 + $var2);
     }
 
     function aftrekken($var1, $var2) {
@@ -148,12 +150,14 @@
             return $var1 * faculteit($var1 - 1);
         }
     }
-function naamBewerking(){
-    
-}
-    
-    
-    
+
+    function printUitkomst($par1,$par2,$uitkomst) {
+        $aanroep = debug_backtrace();
+        echo "Het getal in ".$par1." met bewerking ".$aanroep[1]["function"] ." met ".$par2 ." is ".$uitkomst;
+
+//        echo $aanroep[1]["function"];
+//        var_dump($aanroep);
+    }
     ?>
 
 
