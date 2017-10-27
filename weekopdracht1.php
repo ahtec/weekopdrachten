@@ -12,13 +12,13 @@
      *  Dit php programma gebruikt 3 parameters
      *  Gerard Doets 25 oktober 2017
      * *****************************************************
-      $eerste   dit is het eerste argement van de bewerking
-      $tweede   dit is het tweede  argement van de bewerking
-      $bewerking = dit is de bewerking tussen de parameters
+      $eerste    dit is het eerste argement van de bewerking
+      $tweede    dit is het tweede  argement van de bewerking
+      $bewerking dit is de bewerking tussen de parameters
      * *********************************************************
      */
     $bewerking = $_GET['bewerking'];
-    ;
+    
 
     $eerste = $_GET['eerste'];
     $tweede = $_GET['tweede'];
@@ -79,8 +79,6 @@
             break;
         default:
             echo "Onbekende bewerking: " . $bewerking;
-
-
 
             break;
     }
