@@ -18,12 +18,19 @@
      * *********************************************************
      */
     $bewerking = $_GET['bewerking'];
+    ;
 
     $eerste = $_GET['eerste'];
     $tweede = $_GET['tweede'];
 
-//    echo "<br>";
+    echo "<br>U kunt gebruiken: <b><br>  optellen <br>aftrekken<br> vermenigvuldigen <br>delen<br> machtverheffen <br>wortel<br>";
+    echo" rest <br>logaritme<br> kegeloppervlakte<br> kegelinhoud <br> faculteit <br>faculteitOverzicht";
     echo "<br>";
+    echo "<br>";
+    echo "<br>";
+    echo "<br>";
+
+
     switch ($bewerking) {
         case "optellen":
             optellen($eerste, $tweede);
@@ -40,7 +47,7 @@
         case "machtverheffen":
             machtverheffen($eerste, $tweede);
             break;
-        case "wortel":
+        case "wortel":   //  met dank aan de wiskunde lerares
             wortel($eerste, $tweede);
             break;
         case "rest":
@@ -65,15 +72,15 @@
             break;
         default:
             echo "Onbekende bewerking: " . $bewerking;
-            echo "<br>U kunt gebruiken: <b><br>  optellen <br>aftrekken<br> vermenigvuldigen <br>delen<br> machtverheffen <br>wortel<br>";
-            echo" rest <br>logaritme<br> kegeloppervlakte<br> kegelinhoud <br> faculteit <br>faculteitOverzicht";
+
             break;
     }
     echo "<br>";
     echo "<br>";
 
     function optellen($var1, $var2) {
-        echo "Het getal " . $var1 . " opgeteld bij  " . $var2 . " is:  " . ($var1 + $var2);
+        $aanroep = debug_backtrace(1, 2);
+        echo "<br>Het getal " . $var1 . "  " . $aanroep[0]["function"] . " met  " . $var2 . " is:  " . ($var1 + $var2);
     }
 
     function aftrekken($var1, $var2) {
@@ -134,13 +141,19 @@
     }
 
     function faculteit($var1) {
-
+// recursie is dus mogelijk in php
         if ($var1 < 2) {
             return 1;
         } else {
             return $var1 * faculteit($var1 - 1);
         }
     }
+function naamBewerking(){
+    
+}
+    
+    
+    
     ?>
 
 
