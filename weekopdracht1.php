@@ -90,22 +90,24 @@
 
     function vermenigvuldigen($var1, $var2) {
 //        echo "Het getal " . $var1 . " vermenigvuldigd met " . $var2 . " is : " . ($var1 * $var2);
-                $uitkomst = $var1 * $var2;
+        $uitkomst = $var1 * $var2;
         printUitkomst($var1, $var2, $uitkomst);
-
     }
 
     function delen($var1, $var2) {
         if ($var2 == 0) {
             echo "Kan niet delen door 0";
         } else {
-                $uitkomst = $var1 / $var2;
-        printUitkomst($var1, $var2, $uitkomst);
+            $uitkomst = $var1 / $var2;
+            printUitkomst($var1, $var2, $uitkomst);
         }
     }
 
     function machtverheffen($var1, $var2) {
-        echo "Het getal " . $var1 . " tot de macht " . $var2 . " is : " . ($var1 ** $var2);
+                    $uitkomst = $var1 ** $var2;
+            printUitkomst($var1, $var2, $uitkomst);
+
+//        echo "Het getal " . $var1 . " tot de macht " . $var2 . " is : " . ($var1 ** $var2);
     }
 
     function wortel($var1, $var2) {
