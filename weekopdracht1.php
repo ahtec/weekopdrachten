@@ -63,8 +63,8 @@
             kegelinhoud($eerste, $tweede);
             break;
         case "faculteit":
-            
-                            echo "  <br>" . $eerste . " faculteit geeft " . number_format((string)faculteit($eerste), 0, '', '');
+
+            echo "  <br>" . $eerste . " faculteit geeft " . number_format((string) faculteit($eerste), 0, '', '');
 
 //            echo faculteit($eerste);
 //            echo "<br>";
@@ -72,14 +72,14 @@
 //            echo number_format((string)faculteit($eerste), 0, '', '');
             break;
         case "faculteitOverzicht":
+            echo"<hr> <center>Breng de zoom van de broser naar 50 % voor een visueel aantrekkelijk resultaat</center> <hr>" ;
             for ($i = 2; $i <= 170; $i++) {  // 170 geeft de hoogste waarde mogelijk
-                echo "  <br>" . $i . " faculteit geeft " . number_format((string)faculteit($i), 0, '', '');
-                
+                echo "  <br>" . $i . " faculteit geeft " . number_format((string) faculteit($i), 0, '', '');
             }
             break;
         default:
             echo "Onbekende bewerking: " . $bewerking;
- 
+
 
 
             break;
@@ -172,7 +172,6 @@
     function printUitkomst($par1, $par2, $uitkomst) {
         $aanroep = debug_backtrace();
         echo "Het getal in " . $par1 . " met bewerking " . $aanroep[1]["function"] . " met " . $par2 . " is " . $uitkomst;
-
     }
     ?>
 
