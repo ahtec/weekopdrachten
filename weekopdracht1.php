@@ -104,18 +104,20 @@
     }
 
     function machtverheffen($var1, $var2) {
-                    $uitkomst = $var1 ** $var2;
-            printUitkomst($var1, $var2, $uitkomst);
+        $uitkomst = $var1 ** $var2;
+        printUitkomst($var1, $var2, $uitkomst);
 
 //        echo "Het getal " . $var1 . " tot de macht " . $var2 . " is : " . ($var1 ** $var2);
     }
 
     function wortel($var1, $var2) {
         if ($var2 <= 0 || $var1 <= 0) {
-            echo "Beide  argumenten moeten  positef zijn voor worteltrekken";
+            echo "Beide  argumenten moeten  positef zijn voor worteltrekken, vind ik.";
         } else {
             $var3 = 1 / $var2;
-            echo "De " . $var2 . "macht wortel van " . $var1 . " is : " . ($var1 ** $var3);
+            $uitkomst = $var1 ** $var3;
+            printUitkomst($var1, $var2, $uitkomst);
+//            echo "De " . $var2 . "macht wortel van " . $var1 . " is : " . ($var1 ** $var3);
         }
     }
 
@@ -123,7 +125,9 @@
         if ($var2 <= 0 || $var1 <= 0) {
             echo "Beide  argumenten moeten  positef zijn voor modulo berekening";
         } else {
-            echo "De rest na deling van " . $var1 . " gedeeld door " . $var2 . " is : " . ($var1 % $var2);
+            $uitkomst = $var1 % $var2;
+            printUitkomst($var1, $var2, $uitkomst);
+//            echo "De rest na deling van " . $var1 . " gedeeld door " . $var2 . " is : " . ($var1 % $var2);
         }
     }
 
