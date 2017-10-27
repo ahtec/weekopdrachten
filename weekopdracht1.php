@@ -79,25 +79,28 @@
     echo "<br>";
 
     function optellen($var1, $var2) {
-//        $aanroep = debug_backtrace(1, 2);
         $uitkomst = $var1 + $var2;
-        printUitkomst($var1,$var2,$uitkomst);
-//        echo "<br>Het getal " . $var1 . "  " . $aanroep[0]["function"] . " met  " . $var2 . " is:  " . ($var1 + $var2);
+        printUitkomst($var1, $var2, $uitkomst);
     }
 
     function aftrekken($var1, $var2) {
-        echo "Het getal " . $var1 . " verminderd met  " . $var2 . " is:  " . ($var1 - $var2);
+        $uitkomst = $var1 - $var2;
+        printUitkomst($var1, $var2, $uitkomst);
     }
 
     function vermenigvuldigen($var1, $var2) {
-        echo "Het getal " . $var1 . " vermenigvuldigd met " . $var2 . " is : " . ($var1 * $var2);
+//        echo "Het getal " . $var1 . " vermenigvuldigd met " . $var2 . " is : " . ($var1 * $var2);
+                $uitkomst = $var1 * $var2;
+        printUitkomst($var1, $var2, $uitkomst);
+
     }
 
     function delen($var1, $var2) {
         if ($var2 == 0) {
             echo "Kan niet delen door 0";
         } else {
-            echo "Het getal " . $var1 . " gedeeld door " . $var2 . " is: " . ($var1 / $var2);
+                $uitkomst = $var1 / $var2;
+        printUitkomst($var1, $var2, $uitkomst);
         }
     }
 
@@ -151,9 +154,9 @@
         }
     }
 
-    function printUitkomst($par1,$par2,$uitkomst) {
+    function printUitkomst($par1, $par2, $uitkomst) {
         $aanroep = debug_backtrace();
-        echo "Het getal in ".$par1." met bewerking ".$aanroep[1]["function"] ." met ".$par2 ." is ".$uitkomst;
+        echo "Het getal in " . $par1 . " met bewerking " . $aanroep[1]["function"] . " met " . $par2 . " is " . $uitkomst;
 
 //        echo $aanroep[1]["function"];
 //        var_dump($aanroep);
