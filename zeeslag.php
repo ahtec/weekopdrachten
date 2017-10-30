@@ -3,74 +3,61 @@
 $zee = array();
 $grooteZee = 4;
 
-$schip1 = new schip;
-$schip1->positie = array(array( 100,10));
-$schip1->positie = array(array( 100,11));
-$schip1->positie = array(array( 100,12));
+$schip1 = new schip(array(array(100, 10), array(100, 11), array(100, 12)), "grootschip");
+$schip2 = new schip(array(array(100, 20), array(100, 21), array(100, 22)), "leukschip");
+$schip3 = new schip(array(array(100, 50), array(100, 51), array(100, 52)), "dedobber");
+$schip4 = new schip(array(array(100, 80), array(100, 51), array(100, 82)), "zeilboot");
+$schip5 = new schip(array(array(100, 11), array(100, 12), array(100, 13)), "roei");
+$alleSchepen = array($schip1, $schip2, $schip3, $schip4, $schip5);
+
+
+schiet(100, 51, $alleSchepen);
+
+
+//$tempArray = array();
+//for ($hor = 0; $hor < $grooteZee; $hor++) {
+//    for ($ver = 0; $ver < $grooteZee; $ver++) {
+//        $tempArray[] = [$ver];
+//    }
+//    $zee[] = $tempArray;
+//}
 
 
 
-
-
-
-
-$tempArray = array();
-for ($hor = 0; $hor < $grooteZee; $hor++) {
-    
-    for ($ver = 0; $ver < $grooteZee; $ver++) {
-        $tempArray[]  = [$ver];
+function schiet($hor, $ver,$param_alleSchepen) {
+    for ($i = 0; $i < count($param_alleSchepen); $i++) {
+        $huidigSchip = $param_alleSchepen[$i];
+        $naamSchip = $huidigSchip->naamSchip;
+        echo "<br>Ga schieten op schip: " . $naamSchip;
+         $param_alleSchepen[$i]->benIkGeraakt($hor, $ver);
         
     }
-    $zee[] = $tempArray; 
-    
 }
 
-//print_r($zee);
-print_r($schip1);
-echo $schip1->benIkGeraakt(100, 11);
-
-
+//////////////////////////////////////////////////////////////////////////////////
 class schip {
 
     public $positie = array();
-    
-    
-//    public $horVoorPositieInDeZee;
-//    public $verVoorPositieInDeZee;
-//    public $horAchterPositieInDeZee;
-//    public $verAchterPositieInDeZee;
-//    public $lengte;
     public $geraakt;
+    public $naamSchip;
 
-    function geefPosite() {
-        
+    function __construct($param1, $param2) {
+        $this->positie = $param1;
+        $this->naamSchip = $param2;
     }
+
     function benIkGeraakt($hor, $ver) {
         $eruit = false;
-        
-//        foreach ($positie)
+
         for ($i = 0; $i < count($this->positie); $i++) {
-           if  ($positie[$i][0] == $hor &&  $positie[$i][1] == $ver    ) {
-               echo "GERAAKT";
-           }
-        }    
-        
+//            echo $this->positie[$i][0];
+            if ($this->positie[$i][0] == $hor && $this->positie[$i][1] == $ver) {
+                echo "<br>".$this->naamSchip ."  GERAAKT op positie " . $i;
+                $eruit = TRUE;
+//                exit();
+            }
+        }
         return $eruit;
-        
     }
-    
-    
-    
-    
-    
-    
-    
 
 }
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
