@@ -19,18 +19,32 @@ print_r($zee);
 
 class schip {
 
-    public $horPpositieInDeZee;
-    public $verPpositieInDeZee;
-    public $lengte;
-    public $gezonken;
+    public $positie = array();
+    
+    
+//    public $horVoorPositieInDeZee;
+//    public $verVoorPositieInDeZee;
+//    public $horAchterPositieInDeZee;
+//    public $verAchterPositieInDeZee;
+//    public $lengte;
+    public $geraakt;
 
     function geefPosite() {
         
     }
-    function beIkGeraakt($hor, $ver) {
+    function benIkGeraakt($hor, $ver) {
+        $eruit = false;
         
+//        foreach ($positie)
+        for ($index = 0; $index < count($array); $index++) {
+            
+        }    
+        
+        return $eruit;
         
     }
+    
+    
     
     
     
