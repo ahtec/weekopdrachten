@@ -19,13 +19,20 @@ print_r($zee);
 
 class schip {
 
-    public $positieInDeZee;
+    public $horPpositieInDeZee;
+    public $verPpositieInDeZee;
     public $lengte;
     public $gezonken;
 
     function geefPosite() {
         
     }
+    function beIkGeraakt($hor, $ver) {
+        
+        
+    }
+    
+    
     
     
     
