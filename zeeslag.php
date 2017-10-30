@@ -1,4 +1,13 @@
-<?php
+
+<html>
+    <head>
+        <style>
+            body{
+                font-family: 'courier';
+            }
+        </style>
+    </head>
+        <?php
 
 //$zee = array();
 //$grooteZee = 4;
@@ -25,11 +34,12 @@ schiet(100, 51, $alleSchepen);
 
 
 function schiet($hor, $ver, $param_alleSchepen) {
+    echo "<br> <br>ga schieten op positie : ".$hor ." ".$ver ;
     for ($i = 0; $i < count($param_alleSchepen); $i++) {
 //        $huidigSchip = $param_alleSchepen[$i];
         if ($param_alleSchepen[$i]->geraakt == FALSE) {
 //            $naamSchip = $huidigSchip->naamSchip;
-            echo "<br>Ga schieten op sschip: " . $param_alleSchepen[$i]->naamSchip;
+            echo "<br>Ga schieten op schip: " . $param_alleSchepen[$i]->naamSchip;
             $param_alleSchepen[$i]->benIkGeraakt($hor, $ver);
         }
     }
@@ -53,7 +63,7 @@ class schip {
         for ($i = 0; $i < count($this->positie); $i++) {
 //            echo $this->positie[$i][0];
             if ($this->positie[$i][0] == $hor && $this->positie[$i][1] == $ver) {
-                echo "<br>" . $this->naamSchip . "  GERAAKT op positie " . $i;
+                echo  "   ".$this->naamSchip . " boem.... GERAAKT op positie " . $i;
                 $eruit = TRUE;
                 $this->geraakt = TRUE;
 //                exit();
@@ -63,3 +73,8 @@ class schip {
     }
 
 }
+
+
+
+
+?></html>
