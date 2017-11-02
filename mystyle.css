@@ -1,0 +1,11 @@
+#idwelcome {color:blue;font-weight:900;}
+
+
+
+
+div{  
+    width:250px; /* or whatever width you want. */
+    display:block;
+    height:70px;
+    background-color: gray;
+}

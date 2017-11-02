@@ -1,9 +1,15 @@
 <!-----
 fo
 
-teken 
+teken eerst invoer html voor schepen
 
+voer schepen in 
+als je klaar bent met schepen invoeren
 
+ga naar schieten html
+    schiet op  coordinaat
+    geef resultaat 
+    herhaal schieten
 
 ----->
 <html>
@@ -13,41 +19,40 @@ teken
         <meta name=description content="dit is de oeffening om zeeslag te programmeren"></meta>
         <meta name=author content="Gerard Doets"></meta>
         <meta name=viewport content="width=device-width,initial-scale=1.0" ></meta>
-
-        <style>
-
-            span{
-                background-color:red;
-                border:1px solid #33ff33;
-                padding:10px;
+        <script>
+            function directeVerwijzing(xvar, yvar) {
+                var locationRegel = "contact.php?xCoordinaat=" + xvar + "&yCoordinaat=" + yvar +"?$alleSchepen" ;
+                document.location = locationRegel;
+                alert();
             }
+        </script>
 
-            body{
-                background-color:gray;
-                border:10px solid red;
-                padding:10px;
-                font-family: 'courier';
-            }
-        </style>
+
     </head>
     <body>
-        <form action=zeeslag.php method=GET>
+
+        <table>
+            <!--<form action=zeeslag.php method=GET  >-->
             <?php
-            for ($y = 1; $y < 10; $y++) {
-                echo "<br>";
-                for ($x = 1; $x < 10; $x++) {
-                    echo "<input type='checkbox' name=checkit" . $x .$y. " value=jojo> ";
+            for ($y = 1; $y < 4; $y++) {  ///rijen
+                echo"<tr>";
+                for ($x = 1; $x < 3; $x++) {   //colommen
+//                    echo "<input type='checkbox' name=checkit_" . $x ."_" .$y. " value=jojo> ";
+                    echo '<td onclick="directeVerwijzing(' . $x . ',' . $y . ')"><div id="vakje1"></div></td>';
+//                    echo '<td><div> tests'.$x.$y.'</div></td>';
                 }
+                echo"</tr>";
             }
             ?>
-            <input type=submit>
-        </form>
+
+        </table>
 
 
     </body>
     <?php
-//$zee = array();
-//$grooteZee = 4;
+// hier checken of we gesybmit hebben
+//    $var2 = count($_GET)
+
 
     $schip1 = new schip(array(array(90, 10), array(90, 11), array(90, 12), array(90, 13), array(90, 14), array(90, 15), array(90, 16), array(90, 17)), "De Ruyter");
     $schip2 = new schip(array(array(80, 20), array(80, 21), array(80, 22), array(80, 23), array(80, 24), array(80, 25), array(80, 26), array(80, 27)), "De Kareldoorman");
@@ -56,11 +61,11 @@ teken
     $schip5 = new schip(array(array(100, 11), array(100, 12), array(100, 13)), "de Van Kinsbergen");
     $alleSchepen = array($schip1, $schip2, $schip3, $schip4, $schip5);
 
-
+// here is where the shooting takes place, dus hier moet iets vanuit js komen 
     schiet(100, 14, $alleSchepen);
     schiet(80, 26, $alleSchepen);
     schiet(80, 26, $alleSchepen);
-    schiet(100, 14, $alleSchepen);
+    schiet(100, 13, $alleSchepen);
 
     function schiet($hor, $ver, $param_alleSchepen) {
         echo "<br> <br>Ik schiet op positie : " . $hor . " " . $ver;
