@@ -34,24 +34,24 @@ ga naar schieten html
         <table>
             <!--<form action=zeeslag.php method=GET  >-->
             <?php
-            $schip1 = new schip(array(array(90, 10), array(90, 11), array(90, 12), array(90, 13), array(90, 14), array(90, 15), array(90, 16), array(90, 17)), "De Ruyter");
-            $schip2 = new schip(array(array(80, 20), array(80, 21), array(80, 22), array(80, 23), array(80, 24), array(80, 25), array(80, 26), array(80, 27)), "De Kareldoorman");
-            $schip3 = new schip(array(array(100, 50), array(100, 51), array(100, 52)), "De Walrus");
-            $schip4 = new schip(array(array(100, 80), array(100, 51), array(100, 82)), "De Johan de Witt");
-            $schip5 = new schip(array(array(100, 11), array(100, 12), array(100, 13)), "de Van Kinsbergen");
-            $alleSchepen = array($schip1, $schip2, $schip3, $schip4, $schip5);
+            
+            $schip1 = new schip(array(array(30, 10), array(30, 11), array(30, 12), array(30, 13), array(30, 14), array(30, 15), array(30, 16), array(30, 17)), "De Ruyter");
+            $schip2 = new schip(array(array(10, 20), array(10, 21), array(10, 22), array(10, 23), array(10, 24), array(10, 25), array(10, 26), array(10, 27)), "De Kareldoorman");
+            $schip3 = new schip(array(array(10, 5), array(11, 5), array(12, 5)), "De Walrus");
+//            $schip4 = new schip(array(array(100, 80), array(100, 51), array(100, 82)), "De Johan de Witt");
+//            $schip5 = new schip(array(array(100, 11), array(100, 12), array(100, 13)), "de Van Kinsbergen");
+            $alleSchepen = array($schip1, $schip2, $schip3);
 
-            for ($y = 1; $y < 100; $y++) {  ///rijen
+            for ($y = 1; $y < 50; $y++) {  ///rijen
                 echo"<tr>";
-                for ($x = 1; $x < 100; $x++) {   //colommen
+                for ($x = 1; $x < 50; $x++) {   //colommen
 //                    echo "<input type='checkbox' name=checkit_" . $x ."_" .$y. " value=jojo> ";
-                    if(FALSE){
-                        
-                    }  else{
-                    
-                    echo '<td onclick="directeVerwijzing(' . $x . ',' . $y . ')"><div id="vakje"></div></td>';
+                    if (isHierEenSchp($x, $y, $alleSchepen)) {
+                        echo '<td onclick="directeVerwijzing(' . $x . ',' . $y . ')"><div id="idHierLigtEenSchip"></div></td>';
+                    } else {
+                        echo '<td onclick="directeVerwijzing(' . $x . ',' . $y . ')"><div id="idHierLigtGeenSchip"></div></td>';
 //                    echo '<td><div> tests'.$x.$y.'</div></td>';
-                }
+                    }
                 }
                 echo"</tr>";
             }
@@ -76,7 +76,7 @@ ga naar schieten html
     }
 
     function schiet($hor, $ver, $param_alleSchepen) {
-        echo "<br> <br>Ik schiet op positie : " . $hor . " " . $ver;
+//        echo "<br> <br>Ik schiet op positie : " . $hor . " " . $ver;
         for ($i = 0; $i < count($param_alleSchepen); $i++) {
             if ($param_alleSchepen[$i]->geraakt == FALSE) {
 //            $naamSchip = $huidigSchip->naamSchip;
@@ -84,6 +84,20 @@ ga naar schieten html
                 $param_alleSchepen[$i]->benIkGeraakt($hor, $ver);
             }
         }
+    }
+
+    function isHierEenSchp($hor, $ver, $param_alleSchepen) {
+        $eruit = FALSE;
+        for ($i = 0; $i < count($param_alleSchepen); $i++) {
+            if ($param_alleSchepen[$i]->geraakt == FALSE) {
+                if ($param_alleSchepen[$i]->ligtDitSchipOpCoordinaat($hor, $ver) == TRUE) {
+                    $eruit = TRUE;
+                }
+            } else {
+                
+            }
+        }
+        return $eruit;
     }
 
     class schip {
@@ -96,19 +110,20 @@ ga naar schieten html
             $this->positie = $param1;
             $this->naamSchip = $param2;
         }
-        function ligtDitSchipOpCoordinaat( $hor,$ver){
+
+        function ligtDitSchipOpCoordinaat($hor, $ver) {
             $eruit = FALSE;
-                        for ($i = 0; $i < count($this->positie); $i++) {
+            for ($i = 0; $i < count($this->positie); $i++) {
                 if ($this->positie[$i][0] == $hor && $this->positie[$i][1] == $ver) {
-                        }}
-            
-            return $eruit ;
+                    $eruit = TRUE;
+                }
+            }
+
+            return $eruit;
         }
-        
-        
-        
+
         function benIkGeraakt($hor, $ver) {
-            $eruit = false;
+            $eruit = FALSE;
             for ($i = 0; $i < count($this->positie); $i++) {
                 if ($this->positie[$i][0] == $hor && $this->positie[$i][1] == $ver) {
                     echo " en jawel..." . $this->naamSchip . " GERAAKT op positie " . $i;
