@@ -4,8 +4,8 @@
 
 
 div{  
-    width:250px; /* or whatever width you want. */
+    width:10px; /* or whatever width you want. */
     display:block;
-    height:70px;
+    height:10px;
     background-color: gray;
 }
