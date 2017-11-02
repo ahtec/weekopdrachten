@@ -7,7 +7,8 @@ div{
     width:10px; /* or whatever width you want. */
     display:block;
     height:10px;
-    background-color: lightblue;
+    background-color: white;
+    border: 0px solid black;
 }
 
 div#idHierLigtEenSchip{  
@@ -15,5 +16,9 @@ div#idHierLigtEenSchip{
     display:block;
     height:10px;
     background-color: black;
+    border: 0px solid black;
 }
 
+table {
+    border: 0px solid black;
+}

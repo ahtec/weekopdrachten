@@ -31,15 +31,20 @@ ga naar schieten html
     </head>
     <body>
 
-        <table>
+        <table border="0">
             <!--<form action=zeeslag.php method=GET  >-->
             <?php
-            
-            $schip1 = new schip(array(array(30, 10), array(30, 11), array(30, 12), array(30, 13), array(30, 14), array(30, 15), array(30, 16), array(30, 17)), "De Ruyter");
-            $schip2 = new schip(array(array(10, 20), array(10, 21), array(10, 22), array(10, 23), array(10, 24), array(10, 25), array(10, 26), array(10, 27)), "De Kareldoorman");
-            $schip3 = new schip(array(array(10, 5), array(11, 5), array(12, 5)), "De Walrus");
+//            echo count($_GET);
+//            $var1 = count($_GET);
+//            echo $var1;
+//            if ($var1 != 2) {
+
+                $schip1 = new schip(array(array(30, 10), array(30, 11), array(30, 12), array(30, 13), array(30, 14), array(30, 15), array(30, 16), array(30, 17)), "De Ruyter");
+                $schip2 = new schip(array(array(10, 20), array(10, 21), array(10, 22), array(10, 23), array(10, 24), array(10, 25), array(10, 26), array(10, 27)), "De Kareldoorman");
+                $schip3 = new schip(array(array(10, 5), array(11, 5), array(12, 5)), "De Walrus");
 //            $schip4 = new schip(array(array(100, 80), array(100, 51), array(100, 82)), "De Johan de Witt");
 //            $schip5 = new schip(array(array(100, 11), array(100, 12), array(100, 13)), "de Van Kinsbergen");
+//            }
             $alleSchepen = array($schip1, $schip2, $schip3);
 
             for ($y = 1; $y < 50; $y++) {  ///rijen
@@ -62,24 +67,20 @@ ga naar schieten html
 
     </body>
     <?php
-// hier checken of we gesybmit hebben
     $var2 = count($_GET);
-    echo $var2;
+//    echo $var2;
     if ($var2 == 2) {
 
-
-// here is where the shooting takes place, dus hier moet iets vanuit js komen 
-//    schiet(100, 14, $alleSchepen);
-//    schiet(80, 26, $alleSchepen);
-//    schiet(80, 26, $alleSchepen);
         schiet($_GET['xCoordinaat'], $_GET['yCoordinaat'], $alleSchepen);
     }
+    ?>
+    <?php
 
     function schiet($hor, $ver, $param_alleSchepen) {
-//        echo "<br> <br>Ik schiet op positie : " . $hor . " " . $ver;
+        //        echo "<br> <br>Ik schiet op positie : " . $hor . " " . $ver;
         for ($i = 0; $i < count($param_alleSchepen); $i++) {
             if ($param_alleSchepen[$i]->geraakt == FALSE) {
-//            $naamSchip = $huidigSchip->naamSchip;
+                //            $naamSchip = $huidigSchip->naamSchip;
                 echo "<br>Ik kijk of ik  " . $param_alleSchepen[$i]->naamSchip . " geraakt hebt";
                 $param_alleSchepen[$i]->benIkGeraakt($hor, $ver);
             }
@@ -129,7 +130,7 @@ ga naar schieten html
                     echo " en jawel..." . $this->naamSchip . " GERAAKT op positie " . $i;
                     $eruit = TRUE;
                     $this->geraakt = TRUE;
-//                exit();
+                    //                exit();
                 }
             }
             if (!$eruit) {
@@ -140,11 +141,11 @@ ga naar schieten html
 
     }
 
-//$tempArray = array();
-//for ($hor = 0; $hor < $grooteZee; $hor++) {
-//    for ($ver = 0; $ver < $grooteZee; $ver++) {
-//        $tempArray[] = [$ver];
-//    }
-//    $zee[] = $tempArray;
-//}
+    //$tempArray = array();
+    //for ($hor = 0; $hor < $grooteZee; $hor++) {
+    //    for ($ver = 0; $ver < $grooteZee; $ver++) {
+    //        $tempArray[] = [$ver];
+    //    }
+    //    $zee[] = $tempArray;
+    //}
     ?></html>
