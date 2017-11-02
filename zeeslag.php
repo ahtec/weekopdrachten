@@ -15,15 +15,15 @@ ga naar schieten html
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="mystyle.css">
-        <meta name=keywords content="zeeslag seebatle "></meta>
+        <meta name=keywords content="zeeslag batle ship "></meta>
         <meta name=description content="dit is de oeffening om zeeslag te programmeren"></meta>
         <meta name=author content="Gerard Doets"></meta>
         <meta name=viewport content="width=device-width,initial-scale=1.0" ></meta>
         <script>
             function directeVerwijzing(xvar, yvar) {
-                var locationRegel = "contact.php?xCoordinaat=" + xvar + "&yCoordinaat=" + yvar +"?$alleSchepen" ;
+                var locationRegel = "zeeslag.php?xCoordinaat=" + xvar + "&yCoordinaat=" + yvar + "?$alleSchepen";
                 document.location = locationRegel;
-                alert();
+//                alert();
             }
         </script>
 
@@ -38,7 +38,7 @@ ga naar schieten html
                 echo"<tr>";
                 for ($x = 1; $x < 3; $x++) {   //colommen
 //                    echo "<input type='checkbox' name=checkit_" . $x ."_" .$y. " value=jojo> ";
-                    echo '<td onclick="directeVerwijzing(' . $x . ',' . $y . ')"><div id="vakje1"></div></td>';
+                    echo '<td onclick="directeVerwijzing(' . $x . ',' . $y . ')"><div id="vakje"></div></td>';
 //                    echo '<td><div> tests'.$x.$y.'</div></td>';
                 }
                 echo"</tr>";
@@ -51,21 +51,24 @@ ga naar schieten html
     </body>
     <?php
 // hier checken of we gesybmit hebben
-//    $var2 = count($_GET)
+    $var2 = count($_GET);
+    echo $var2;
+    if ($var2 == 2) {
 
 
-    $schip1 = new schip(array(array(90, 10), array(90, 11), array(90, 12), array(90, 13), array(90, 14), array(90, 15), array(90, 16), array(90, 17)), "De Ruyter");
-    $schip2 = new schip(array(array(80, 20), array(80, 21), array(80, 22), array(80, 23), array(80, 24), array(80, 25), array(80, 26), array(80, 27)), "De Kareldoorman");
-    $schip3 = new schip(array(array(100, 50), array(100, 51), array(100, 52)), "De Walrus");
-    $schip4 = new schip(array(array(100, 80), array(100, 51), array(100, 82)), "De Johan de Witt");
-    $schip5 = new schip(array(array(100, 11), array(100, 12), array(100, 13)), "de Van Kinsbergen");
-    $alleSchepen = array($schip1, $schip2, $schip3, $schip4, $schip5);
+        $schip1 = new schip(array(array(90, 10), array(90, 11), array(90, 12), array(90, 13), array(90, 14), array(90, 15), array(90, 16), array(90, 17)), "De Ruyter");
+        $schip2 = new schip(array(array(80, 20), array(80, 21), array(80, 22), array(80, 23), array(80, 24), array(80, 25), array(80, 26), array(80, 27)), "De Kareldoorman");
+        $schip3 = new schip(array(array(100, 50), array(100, 51), array(100, 52)), "De Walrus");
+        $schip4 = new schip(array(array(100, 80), array(100, 51), array(100, 82)), "De Johan de Witt");
+        $schip5 = new schip(array(array(100, 11), array(100, 12), array(100, 13)), "de Van Kinsbergen");
+        $alleSchepen = array($schip1, $schip2, $schip3, $schip4, $schip5);
 
 // here is where the shooting takes place, dus hier moet iets vanuit js komen 
-    schiet(100, 14, $alleSchepen);
-    schiet(80, 26, $alleSchepen);
-    schiet(80, 26, $alleSchepen);
-    schiet(100, 13, $alleSchepen);
+//    schiet(100, 14, $alleSchepen);
+//    schiet(80, 26, $alleSchepen);
+//    schiet(80, 26, $alleSchepen);
+        schiet(100, 13, $alleSchepen);
+    }
 
     function schiet($hor, $ver, $param_alleSchepen) {
         echo "<br> <br>Ik schiet op positie : " . $hor . " " . $ver;
