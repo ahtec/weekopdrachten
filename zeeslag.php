@@ -20,7 +20,6 @@ ga naar schieten html
         <meta name=author content="Gerard Doets"></meta>
         <meta name=viewport content="width=device-width,initial-scale=1.0" ></meta>
         <script>
-            var vorigeSchepenp;
             function directeVerwijzing(xvar, yvar) {
                 var locationRegel = "zeeslag.php?xCoordinaat=" + xvar + "&yCoordinaat=" + yvar;
                 document.location = locationRegel;
@@ -43,6 +42,7 @@ ga naar schieten html
 
         $naamFileMetSerializedData = 'alleSchepen.txt';
         if (file_exists($naamFileMetSerializedData)) {
+            echo "In het eerste deel";
             $serializeData = file_get_contents($naamFileMetSerializedData);
             $alleSchepen = unserialize($serializeData);
         } else {
@@ -69,21 +69,13 @@ ga naar schieten html
     $var2 = count($_GET);
 //    echo $var2;
     if ($var2 == 2) {
-//        $vorigeGeraakteSchip = $_GET['schip'];
-//        echo $_GET['schip'];
-//        echo "vorigeGeraakteSchip is" . $vorigeGeraakteSchip;
-//        echo "dit is de var uit de get schip" . $vorigeGeraakteSchip[0];
-//        echo "dit is de laatste" . $vorigeGeraakteSchip[strlen($vorigeGeraakteSchip) - 1];
-//        for ($i = 1; $i < strlen($vorigeGeraakteSchip); $i++) {
-//            updateGaraakteSchepen($vorigeGeraakteSchip[strlen($vorigeGeraakteSchip) - 1], @$alleSchepen);
-//        }
-//        schermOpBouw($alleSchepen);
         $schipID = bomsAwayOp($_GET['xCoordinaat'], $_GET['yCoordinaat'], $alleSchepen);
         $serializeData = serialize($alleSchepen);
         file_put_contents($naamFileMetSerializedData, $serializeData);
 //                schermOpBouw($alleSchepen);
     }
     ?>
+
     <?php
 
     function schermOpbouw($param_alleSchepen) {
@@ -91,9 +83,6 @@ ga naar schieten html
         for ($y = 1; $y < 50; $y++) {  ///rijen
             echo"<tr>";
             for ($x = 1; $x < 50; $x++) {   //colommen
-//                    echo "<input type='checkbox' name=checkit_" . $x ."_" .$y. " value=jojo> ";
-//                    $schipID = -1;
-//                    echo "<br>Voor aanroep welkschipligthier".$schipID;
                 $schipID = welkSchipLigtHier($x, $y, $param_alleSchepen);
                 if ($schipID >= 0) {
                     echo '<td onclick="directeVerwijzing(' . $x . '  ,  ' . $y . ' )"><div id="idHierLigtEenSchip"></div></td>';
@@ -106,62 +95,19 @@ ga naar schieten html
         echo '</table>';
     }
 
-//    function updateGaraakteSchepen($param_schipID, $param_alleSchepen) {
-//        $stringGezonkenSchepen = "" . $param_schipID;
-//        $stringSchip = "" . $stringGezonkenSchepen;
-//
-//        if ($param_schipID >= 0) {
-//            echo "In updateGaraakteSchepen" . $param_schipID;
-//            $param_alleSchepen[$param_schipID]->geraakt = TRUE;
-//            echo $param_alleSchepen[$param_schipID]->geraakt;
-////            print_r($param_alleSchepen[$param_schipID]);
-////            echo " " . FALSE;
-//        }
-//    }
-//    }
-
     function bomsAwayOp($hor, $ver, $param_alleSchepen) {
         echo "<br> <br>Bommen op positie : " . $hor . " " . $ver;
         for ($i = 0; $i < count($param_alleSchepen); $i++) {
             if ($param_alleSchepen[$i]->geraakt == FALSE) {
-                //            $naamSchip = $huidigSchip->naamSchip;
-//                echo "<br> Ik kijk of ik  " . $param_alleSchepen[$i]->naamSchip . " geraakt hebt";
                 if ($param_alleSchepen[$i]->benIkGeraakt($hor, $ver)) {
-//                    echo "<br>   " . $param_alleSchepen[$i]->naamSchip . " geraakt ";
-                    //serialize object schip
-//                    $serializeData = serialize($param_alleSchepen[$i]);
-//                    $j = $i + 1;
-//                    $naamFile = "schip" . $j;
-//                    echo "<br>Stored under :" . $naamFile;
-//                    file_put_contents($naamFile, $serializeData);
+                    
                 } else {
-                                        echo "<br>   " . $param_alleSchepen[$i]->naamSchip . " niet geraakt ";
-
+                    echo "<br>   " . $param_alleSchepen[$i]->naamSchip . " niet geraakt ";
                 }
             }
         }
     }
 
-//    function getSchip($param_schip){
-//        if (file_exists($param_schip)) {
-//             
-//                    $serializeData = file_get_contents('schip1');
-//            $schip1 = unserialize($serializeData);
-//        } else {
-//            $schip1 = new schip(array(array(30, 10), array(30, 11), array(30, 12), array(30, 13), array(30, 14), array(30, 15), array(30, 16), array(30, 17)), "De Ruyter");
-//        }
-//        
-//        return eruit_schip
-//    }
-//    
-//
-//    if (file_exists('schip1')) {
-//        $schip1 = $serializeData = file_get_contents('schip1');
-//        $schip1 = unserialize($serializeData);
-//    } else {
-//        $schip1 = new schip(array(array(30, 10), array(30, 11), array(30, 12), array(30, 13), array(30, 14), array(30, 15), array(30, 16), array(22, 17)), "De Ruyter");
-//    }
-//
     function welkSchipLigtHier($hor, $ver, $param_alleSchepen) {
         $eruit = -1;
         for ($i = 0; $i < count($param_alleSchepen); $i++) {
@@ -171,7 +117,6 @@ ga naar schieten html
                 }
             }
         }
-//        echo "<br>welkSchipLigtHier: "  . $eruit;
         return $eruit;
     }
 
@@ -184,8 +129,7 @@ ga naar schieten html
 //        public $schipId;
 
         function __construct($param1, $param2) {
-//            static $schepenTeller = 0;
-//            echo $schepenTeller;
+
             $this->positie = $param1;
             $this->naamSchip = $param2;
 //            $schepenTeller++;
@@ -210,19 +154,8 @@ ga naar schieten html
                     $this->geraakt = TRUE;
                 }
             }
-            if (!$eruit) {
-//                echo "  Gelukkig niet geraakt.";
-            }
             return $eruit;
         }
 
     }
-
-    //$tempArray = array();
-    //for ($hor = 0; $hor < $grooteZee; $hor++) {
-    //    for ($ver = 0; $ver < $grooteZee; $ver++) {
-    //        $tempArray[] = [$ver];
-    //    }
-    //    $zee[] = $tempArray;
-    //}
     ?></html>
