@@ -7,7 +7,7 @@ div{
     width:10px; /* or whatever width you want. */
     display:block;
     height:10px;
-    background-color: white;
+    background-color:  gainsboro;
     border: 0px solid black;
 }
 

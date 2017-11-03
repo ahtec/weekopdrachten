@@ -20,8 +20,9 @@ ga naar schieten html
         <meta name=author content="Gerard Doets"></meta>
         <meta name=viewport content="width=device-width,initial-scale=1.0" ></meta>
         <script>
-            function directeVerwijzing(xvar, yvar, schipID) {
-                var locationRegel = "zeeslag.php?xCoordinaat=" + xvar + "&yCoordinaat=" + yvar + "&schip=" + schipID;
+            var vorigeSchepenp;
+            function directeVerwijzing(xvar, yvar) {
+                var locationRegel = "zeeslag.php?xCoordinaat=" + xvar + "&yCoordinaat=" + yvar;
                 document.location = locationRegel;
 //                alert();
             }
@@ -40,30 +41,50 @@ ga naar schieten html
 //            if ($var1 != 2) {
         $schipID = -1;
 
-        $schip1 = new schip(array(array(30, 10), array(30, 11), array(30, 12), array(30, 13), array(30, 14), array(30, 15), array(30, 16), array(30, 17)), "De Ruyter");
-        $schip2 = new schip(array(array(10, 20), array(10, 21), array(10, 22), array(10, 23), array(10, 24), array(10, 25), array(10, 26), array(10, 27)), "De Kareldoorman");
-        $schip3 = new schip(array(array(10, 5), array(11, 5), array(12, 5)), "De Walrus");
-//            $schip4 = new schip(array(array(100, 80), array(100, 51), array(100, 82)), "De Johan de Witt");
-//            $schip5 = new schip(array(array(100, 11), array(100, 12), array(100, 13)), "de Van Kinsbergen");
-//            }
-        $alleSchepen = array($schip1, $schip2, $schip3);
-        if (count($_GET) == 0) {
-            schermOpBouw($alleSchepen);
+
+        if (file_exists('schip1')) {
+            $serializeData = file_get_contents('schip1');
+            $schip1 = unserialize($serializeData);
+        } else {
+            $schip1 = new schip(array(array(30, 10), array(30, 11), array(30, 12), array(30, 13), array(30, 14), array(30, 15), array(30, 16), array(30, 17)), "De Ruyter");
         }
+
+        if (file_exists('schip2')) {
+            $serializeData = file_get_contents('schip2');
+            $schip2 = unserialize($serializeData);
+        } else {
+            $schip2 = new schip(array(array(10, 20), array(10, 21), array(10, 22), array(10, 23), array(10, 24), array(10, 25), array(10, 26), array(10, 27)), "De Kareldoorman");
+        }
+
+
+        if (file_exists('schip3')) {
+            $serializeData = file_get_contents('schip3');
+            $schip3 = unserialize($serializeData);
+        } else {
+            $schip3 = new schip(array(array(10, 5), array(11, 5), array(12, 5)), "De Walrus");
+        }
+
+
+        $alleSchepen = array($schip1, $schip2, $schip3);
+//        if (count($_GET) == 0) {
+        schermOpBouw($alleSchepen);
+//        }
         ?>
-
-
-
 
     </body>
     <?php
     $var2 = count($_GET);
 //    echo $var2;
-    if ($var2 == 3) {
-
-        echo $_GET['schip'];
-        updateGaraakteSchepen($_GET['schip'], @$alleSchepen);
-        schermOpBouw($alleSchepen);
+    if ($var2 == 2) {
+//        $vorigeGeraakteSchip = $_GET['schip'];
+//        echo $_GET['schip'];
+//        echo "vorigeGeraakteSchip is" . $vorigeGeraakteSchip;
+//        echo "dit is de var uit de get schip" . $vorigeGeraakteSchip[0];
+//        echo "dit is de laatste" . $vorigeGeraakteSchip[strlen($vorigeGeraakteSchip) - 1];
+//        for ($i = 1; $i < strlen($vorigeGeraakteSchip); $i++) {
+//            updateGaraakteSchepen($vorigeGeraakteSchip[strlen($vorigeGeraakteSchip) - 1], @$alleSchepen);
+//        }
+//        schermOpBouw($alleSchepen);
         $schipID = bomsAwayOp($_GET['xCoordinaat'], $_GET['yCoordinaat'], $alleSchepen);
     }
     ?>
@@ -78,30 +99,30 @@ ga naar schieten html
 //                    $schipID = -1;
 //                    echo "<br>Voor aanroep welkschipligthier".$schipID;
                 $schipID = welkSchipLigtHier($x, $y, $param_alleSchepen);
-//                                        echo "<br>na aanroep welkschipligthier".$schipID;
                 if ($schipID >= 0) {
-//                                        echo "<br>na if >= 0:".$schipID;
-//                        echo '<td onclick="directeVerwijzing(' . $x . '  ,  ' . $y . ' , ' . $schipID'   ')"><div id="idHierLigtEenSchip"></div></td>';
-                    echo '<td onclick="directeVerwijzing(' . $x . '  ,  ' . $y . ' , ' . $schipID . ')"><div id="idHierLigtEenSchip"></div></td>';
+                    echo '<td onclick="directeVerwijzing(' . $x . '  ,  ' . $y . ' )"><div id="idHierLigtEenSchip"></div></td>';
                 } else {
-                    echo '<td onclick="directeVerwijzing(' . $x . ',' . $y . ', ' . "-1" . ')"><div id="idHierLigtGeenSchip"></div></td>';
-//                    echo '<td><div> tests'.$x.$y.'</div></td>';
+                    echo '<td onclick="directeVerwijzing(' . $x . '  ,  ' . $y . ')"><div id="idHierLigtGeenSchip"></div></td>';
                 }
             }
             echo"</tr>";
         }
-        echo '<table border="0">';
+        echo '</table>';
     }
 
-    function updateGaraakteSchepen($param_schipID, $param_alleSchepen) {
-        if ($param_schipID >= 0) {
-            echo "In updateGaraakteSchepen" . $param_schipID;
-            $param_alleSchepen[$param_schipID]->geraakt = TRUE;
-            echo $param_alleSchepen[$param_schipID]->geraakt;
-            print_r($param_alleSchepen[$param_schipID]);
-//            echo " " . FALSE;
-        }
-    }
+//    function updateGaraakteSchepen($param_schipID, $param_alleSchepen) {
+//        $stringGezonkenSchepen = "" . $param_schipID;
+//        $stringSchip = "" . $stringGezonkenSchepen;
+//
+//        if ($param_schipID >= 0) {
+//            echo "In updateGaraakteSchepen" . $param_schipID;
+//            $param_alleSchepen[$param_schipID]->geraakt = TRUE;
+//            echo $param_alleSchepen[$param_schipID]->geraakt;
+////            print_r($param_alleSchepen[$param_schipID]);
+////            echo " " . FALSE;
+//        }
+//    }
+//    }
 
     function bomsAwayOp($hor, $ver, $param_alleSchepen) {
         echo "<br> <br>Bommen op positie : " . $hor . " " . $ver;
@@ -110,14 +131,37 @@ ga naar schieten html
                 //            $naamSchip = $huidigSchip->naamSchip;
                 echo "<br>Ik kijk of ik  " . $param_alleSchepen[$i]->naamSchip . " geraakt hebt";
                 if ($param_alleSchepen[$i]->benIkGeraakt($hor, $ver)) {
-//                    return $param_alleSchepen[$i]->schipId;
+                    //serialize object schip
+                    $serializeData = serialize($param_alleSchepen[$i]);
+                    $j = $i + 1;
+                    $naamFile = "schip" . $j;
+                    echo "<br>Stored under :" . $naamFile;
+                    file_put_contents($naamFile, $serializeData);
                 }
-            } else {
-                echo "<br> Het schip dat geraakt was is " . $param_alleSchepen[$i]->naamSchip;
             }
         }
     }
 
+//    function getSchip($param_schip){
+//        if (file_exists($param_schip)) {
+//             
+//                    $serializeData = file_get_contents('schip1');
+//            $schip1 = unserialize($serializeData);
+//        } else {
+//            $schip1 = new schip(array(array(30, 10), array(30, 11), array(30, 12), array(30, 13), array(30, 14), array(30, 15), array(30, 16), array(30, 17)), "De Ruyter");
+//        }
+//        
+//        return eruit_schip
+//    }
+//    
+//
+//    if (file_exists('schip1')) {
+//        $schip1 = $serializeData = file_get_contents('schip1');
+//        $schip1 = unserialize($serializeData);
+//    } else {
+//        $schip1 = new schip(array(array(30, 10), array(30, 11), array(30, 12), array(30, 13), array(30, 14), array(30, 15), array(30, 16), array(30, 17)), "De Ruyter");
+//    }
+//
     function welkSchipLigtHier($hor, $ver, $param_alleSchepen) {
         $eruit = -1;
         for ($i = 0; $i < count($param_alleSchepen); $i++) {
