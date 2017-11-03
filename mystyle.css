@@ -4,15 +4,15 @@ body { font-family: 'courier';}
 
 
 div{  
-    width:10px; /* or whatever width you want. */
+    width:10px; 
     display:block;
     height:10px;
-    background-color:  gainsboro;
+    background-color:  white;
     border: 0px solid black;
 }
 
 div#idHierLigtEenSchip{  
-    width:10px; /* or whatever width you want. */
+    width:10px; 
     display:block;
     height:10px;
     background-color: black;
@@ -20,5 +20,5 @@ div#idHierLigtEenSchip{
 }
 
 table {
-    border: 0px solid black;
+    border: 5px solid darkkhaki;
 }

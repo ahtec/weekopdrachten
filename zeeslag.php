@@ -41,31 +41,24 @@ ga naar schieten html
 //            if ($var1 != 2) {
         $schipID = -1;
 
-
-        if (file_exists('schip1')) {
-            $serializeData = file_get_contents('schip1');
-            $schip1 = unserialize($serializeData);
+        $naamFileMetSerializedData = 'alleSchepen.txt';
+        if (file_exists($naamFileMetSerializedData)) {
+            $serializeData = file_get_contents($naamFileMetSerializedData);
+            $alleSchepen = unserialize($serializeData);
         } else {
-            $schip1 = new schip(array(array(30, 10), array(30, 11), array(30, 12), array(30, 13), array(30, 14), array(30, 15), array(30, 16), array(30, 17)), "De Ruyter");
+//            $schip2 = new schip(array(array(10, 20), array(10, 21), array(10, 22), array(10, 23), array(10, 24), array(10, 25), array(10, 26), array(10, 27)), "De Kareldoorman");
+//            $schip3 = new schip(array(array(10, 5), array(11, 5), array(12, 5)), "De Walrus");
+//            $schip1 = new schip(array(array(22, 10), array(22, 11), array(22, 12), array(22, 13), array(22, 14), array(22, 15), array(22, 16), array(22, 17)), "De Ruyter");
+//            $schip1 = new schip(array(array(30, 10), array(30, 11), array(30, 12), array(30, 13), array(30, 14), array(30, 15), array(30, 16), array(30, 17)), "De Zeven provincien");
+//            $alleSchepen = array($schip1, $schip2, $schip3);
+            $alleSchepen[] = new schip(array(array(10, 20), array(10, 21), array(10, 22), array(10, 23), array(10, 24), array(10, 25), array(10, 26), array(10, 27)), "De Kareldoorman");
+            $alleSchepen[] = new schip(array(array(22, 10), array(22, 11), array(22, 12), array(22, 13), array(22, 14), array(22, 15), array(22, 16), array(22, 17)), "De Ruyter");
+            $alleSchepen[] = new schip(array(array(30, 10), array(30, 11), array(30, 12), array(30, 13), array(30, 14), array(30, 15), array(30, 16), array(30, 17)), "De Zeven provincien");
+            $alleSchepen[] = new schip(array(array(10, 5), array(11, 5), array(12, 5)), "De Walrus");
+            $serializeData = serialize($alleSchepen);
+            file_put_contents($naamFileMetSerializedData, $serializeData);
         }
 
-        if (file_exists('schip2')) {
-            $serializeData = file_get_contents('schip2');
-            $schip2 = unserialize($serializeData);
-        } else {
-            $schip2 = new schip(array(array(10, 20), array(10, 21), array(10, 22), array(10, 23), array(10, 24), array(10, 25), array(10, 26), array(10, 27)), "De Kareldoorman");
-        }
-
-
-        if (file_exists('schip3')) {
-            $serializeData = file_get_contents('schip3');
-            $schip3 = unserialize($serializeData);
-        } else {
-            $schip3 = new schip(array(array(10, 5), array(11, 5), array(12, 5)), "De Walrus");
-        }
-
-
-        $alleSchepen = array($schip1, $schip2, $schip3);
 //        if (count($_GET) == 0) {
         schermOpBouw($alleSchepen);
 //        }
@@ -86,6 +79,9 @@ ga naar schieten html
 //        }
 //        schermOpBouw($alleSchepen);
         $schipID = bomsAwayOp($_GET['xCoordinaat'], $_GET['yCoordinaat'], $alleSchepen);
+        $serializeData = serialize($alleSchepen);
+        file_put_contents($naamFileMetSerializedData, $serializeData);
+//                schermOpBouw($alleSchepen);
     }
     ?>
     <?php
@@ -129,14 +125,18 @@ ga naar schieten html
         for ($i = 0; $i < count($param_alleSchepen); $i++) {
             if ($param_alleSchepen[$i]->geraakt == FALSE) {
                 //            $naamSchip = $huidigSchip->naamSchip;
-                echo "<br>Ik kijk of ik  " . $param_alleSchepen[$i]->naamSchip . " geraakt hebt";
+//                echo "<br> Ik kijk of ik  " . $param_alleSchepen[$i]->naamSchip . " geraakt hebt";
                 if ($param_alleSchepen[$i]->benIkGeraakt($hor, $ver)) {
+//                    echo "<br>   " . $param_alleSchepen[$i]->naamSchip . " geraakt ";
                     //serialize object schip
-                    $serializeData = serialize($param_alleSchepen[$i]);
-                    $j = $i + 1;
-                    $naamFile = "schip" . $j;
-                    echo "<br>Stored under :" . $naamFile;
-                    file_put_contents($naamFile, $serializeData);
+//                    $serializeData = serialize($param_alleSchepen[$i]);
+//                    $j = $i + 1;
+//                    $naamFile = "schip" . $j;
+//                    echo "<br>Stored under :" . $naamFile;
+//                    file_put_contents($naamFile, $serializeData);
+                } else {
+                                        echo "<br>   " . $param_alleSchepen[$i]->naamSchip . " niet geraakt ";
+
                 }
             }
         }
@@ -159,7 +159,7 @@ ga naar schieten html
 //        $schip1 = $serializeData = file_get_contents('schip1');
 //        $schip1 = unserialize($serializeData);
 //    } else {
-//        $schip1 = new schip(array(array(30, 10), array(30, 11), array(30, 12), array(30, 13), array(30, 14), array(30, 15), array(30, 16), array(30, 17)), "De Ruyter");
+//        $schip1 = new schip(array(array(30, 10), array(30, 11), array(30, 12), array(30, 13), array(30, 14), array(30, 15), array(30, 16), array(22, 17)), "De Ruyter");
 //    }
 //
     function welkSchipLigtHier($hor, $ver, $param_alleSchepen) {
@@ -180,14 +180,15 @@ ga naar schieten html
         public $positie = array();
         public $geraakt;
         public $naamSchip;
-        public $schipId;
+
+//        public $schipId;
 
         function __construct($param1, $param2) {
-            static $schepenTeller = 0;
-            echo $schepenTeller;
+//            static $schepenTeller = 0;
+//            echo $schepenTeller;
             $this->positie = $param1;
             $this->naamSchip = $param2;
-            $schepenTeller++;
+//            $schepenTeller++;
         }
 
         function ligtDitSchipOpCoordinaat($hor, $ver) {
@@ -197,7 +198,6 @@ ga naar schieten html
                     $eruit = TRUE;
                 }
             }
-
             return $eruit;
         }
 
@@ -205,15 +205,13 @@ ga naar schieten html
             $eruit = FALSE;
             for ($i = 0; $i < count($this->positie); $i++) {
                 if ($this->positie[$i][0] == $hor && $this->positie[$i][1] == $ver) {
-                    echo " en jawel..." . $this->naamSchip . " GERAAKT op positie " . $i;
+                    echo " <BR>" . $this->naamSchip . " GERAAKT op positie " . $i;
                     $eruit = TRUE;
                     $this->geraakt = TRUE;
-//                    break;
-                    //                exit();
                 }
             }
             if (!$eruit) {
-                echo "  Gelukkig niet geraakt.";
+//                echo "  Gelukkig niet geraakt.";
             }
             return $eruit;
         }
