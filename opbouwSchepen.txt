@@ -1,0 +1,4 @@
+            $alleSchepen[] = new schip(array(array(10, 20), array(10, 21), array(10, 22), array(10, 23), array(10, 24), array(10, 25), array(10, 26), array(10, 27)), "De Kareldoorman");
+            $alleSchepen[] = new schip(array(array(22, 10), array(22, 11), array(22, 12), array(22, 13), array(22, 14), array(22, 15), array(22, 16), array(22, 17)), "De Ruyter");
+            $alleSchepen[] = new schip(array(array(30, 10), array(30, 11), array(30, 12), array(30, 13), array(30, 14), array(30, 15), array(30, 16), array(30, 17)), "De Zeven provincien");
+            $alleSchepen[] = new schip(array(array(10, 5), array(11, 5), array(12, 5)), "De Walrus");

@@ -1,9 +1,9 @@
 <!-----
 fo
 
-teken eerst invoer html voor schepen
+teken eerst invoer html voor schepen  |  todo
 
-voer schepen in 
+voer schepen in     |todo
 als je klaar bent met schepen invoeren
 
 ga naar schieten html
@@ -53,10 +53,9 @@ ga naar schieten html
 //            $schip1 = new schip(array(array(22, 10), array(22, 11), array(22, 12), array(22, 13), array(22, 14), array(22, 15), array(22, 16), array(22, 17)), "De Ruyter");
 //            $schip1 = new schip(array(array(30, 10), array(30, 11), array(30, 12), array(30, 13), array(30, 14), array(30, 15), array(30, 16), array(30, 17)), "De Zeven provincien");
 //            $alleSchepen = array($schip1, $schip2, $schip3);
-            $alleSchepen[] = new schip(array(array(10, 20), array(10, 21), array(10, 22), array(10, 23), array(10, 24), array(10, 25), array(10, 26), array(10, 27)), "De Kareldoorman");
-            $alleSchepen[] = new schip(array(array(22, 10), array(22, 11), array(22, 12), array(22, 13), array(22, 14), array(22, 15), array(22, 16), array(22, 17)), "De Ruyter");
-            $alleSchepen[] = new schip(array(array(30, 10), array(30, 11), array(30, 12), array(30, 13), array(30, 14), array(30, 15), array(30, 16), array(30, 17)), "De Zeven provincien");
-            $alleSchepen[] = new schip(array(array(10, 5), array(11, 5), array(12, 5)), "De Walrus");
+//            include_once  'opbouwSchepen.txt';
+            $alleSchepen = opbouwAlleSchepen();
+
             $serializeData = serialize($alleSchepen);
             file_put_contents($naamFileMetSerializedData, $serializeData);
         }
@@ -124,6 +123,16 @@ ga naar schieten html
             echo"</tr>";
         }
         echo '</table>';
+    }
+
+    function opbouwAlleSchepen() {
+
+        $eruit = array();
+        $eruit[] = new schip(array(array(10, 20), array(10, 21), array(10, 22), array(10, 23), array(10, 24), array(10, 25), array(10, 26), array(10, 27)), "De Kareldoorman");
+        $eruit[] = new schip(array(array(22, 10), array(22, 11), array(22, 12), array(22, 13), array(22, 14), array(22, 15), array(22, 16), array(22, 17)), "De Ruyter");
+        $eruit[] = new schip(array(array(30, 10), array(30, 11), array(30, 12), array(30, 13), array(30, 14), array(30, 15), array(30, 16), array(30, 17)), "De Zeven provincien");
+        $eruit[] = new schip(array(array(10, 5), array(11, 5), array(12, 5)), "De Walrus");
+        return $eruit;
     }
     ?>
 
