@@ -6,7 +6,7 @@ body { font-family: 'courier';}
 div{  
     width:15px; 
     display:block;
-    height:15px;
+    height:10px;
     background-color:  white;
     border: 0px solid black;
 }
@@ -14,7 +14,7 @@ div{
 div#idHierLigtEenSchip{  
     width:15px; 
     display:block;
-    height:15px;
+    height:10px;
     background-color: black;
     border: 0px solid black;
 }
