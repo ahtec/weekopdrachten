@@ -34,10 +34,12 @@ ga naar schieten html
 
         <!--<form action=zeeslag.php method=GET  >-->
         <?php
+        require_once 'schip.php';
+
 //            echo count($_GET);
 //            $var1 = count($_GET);
 //            echo $var1;
-//            if ($var1 != 2) {
+//            if ($var1 == 0) {
         $schipID = -1;
 
         $naamFileMetSerializedData = 'alleSchepen.txt';
@@ -59,9 +61,9 @@ ga naar schieten html
             file_put_contents($naamFileMetSerializedData, $serializeData);
         }
 
-//        if (count($_GET) == 0) {
-        schermOpBouw($alleSchepen);
-//        }
+        if (count($_GET) == 0) {
+            schermOpBouw($alleSchepen);
+        }
         ?>
 
     </body>
@@ -69,30 +71,17 @@ ga naar schieten html
     $var2 = count($_GET);
 //    echo $var2;
     if ($var2 == 2) {
+//        deze php is aangeroepen met bom coordinaten
+//         aanroep per schip of het schip geraakt is
+//        als dan  wordt voor dat schip  de "geraakt" variabele op waar gezet t
         $schipID = bomsAwayOp($_GET['xCoordinaat'], $_GET['yCoordinaat'], $alleSchepen);
+
+//        De gegevens worden geserialized en daarmee bewaard
+
         $serializeData = serialize($alleSchepen);
         file_put_contents($naamFileMetSerializedData, $serializeData);
-//                schermOpBouw($alleSchepen);
-    }
-    ?>
 
-    <?php
-
-    function schermOpbouw($param_alleSchepen) {
-        echo "        <table>";
-        for ($y = 1; $y < 50; $y++) {  ///rijen
-            echo"<tr>";
-            for ($x = 1; $x < 50; $x++) {   //colommen
-                $schipID = welkSchipLigtHier($x, $y, $param_alleSchepen);
-                if ($schipID >= 0) {
-                    echo '<td onclick="directeVerwijzing(' . $x . '  ,  ' . $y . ' )"><div id="idHierLigtEenSchip"></div></td>';
-                } else {
-                    echo '<td onclick="directeVerwijzing(' . $x . '  ,  ' . $y . ')"><div id="idHierLigtGeenSchip"></div></td>';
-                }
-            }
-            echo"</tr>";
-        }
-        echo '</table>';
+        schermOpBouw($alleSchepen);
     }
 
     function bomsAwayOp($hor, $ver, $param_alleSchepen) {
@@ -120,42 +109,22 @@ ga naar schieten html
         return $eruit;
     }
 
-    class schip {
-
-        public $positie = array();
-        public $geraakt;
-        public $naamSchip;
-
-//        public $schipId;
-
-        function __construct($param1, $param2) {
-
-            $this->positie = $param1;
-            $this->naamSchip = $param2;
-//            $schepenTeller++;
-        }
-
-        function ligtDitSchipOpCoordinaat($hor, $ver) {
-            $eruit = FALSE;
-            for ($i = 0; $i < count($this->positie); $i++) {
-                if ($this->positie[$i][0] == $hor && $this->positie[$i][1] == $ver) {
-                    $eruit = TRUE;
+    function schermOpbouw($param_alleSchepen) {
+        echo "        <table>";
+        for ($y = 1; $y < 50; $y++) {  ///rijen
+            echo"<tr>";
+            for ($x = 1; $x < 50; $x++) {   //colommen
+                $schipID = welkSchipLigtHier($x, $y, $param_alleSchepen);
+                if ($schipID >= 0) {
+                    echo '<td onclick="directeVerwijzing(' . $x . '  ,  ' . $y . ' )"><div id="idHierLigtEenSchip"></div></td>';
+                } else {
+                    echo '<td onclick="directeVerwijzing(' . $x . '  ,  ' . $y . ')"><div id="idHierLigtGeenSchip"></div></td>';
                 }
             }
-            return $eruit;
+            echo"</tr>";
         }
-
-        function benIkGeraakt($hor, $ver) {
-            $eruit = FALSE;
-            for ($i = 0; $i < count($this->positie); $i++) {
-                if ($this->positie[$i][0] == $hor && $this->positie[$i][1] == $ver) {
-                    echo " <BR>" . $this->naamSchip . " GERAAKT op positie " . $i;
-                    $eruit = TRUE;
-                    $this->geraakt = TRUE;
-                }
-            }
-            return $eruit;
-        }
-
+        echo '</table>';
     }
-    ?></html>
+    ?>
+
+</html>
