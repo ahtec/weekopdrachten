@@ -34,7 +34,7 @@
             $eruit = FALSE;
             for ($i = 0; $i < count($this->positie); $i++) {
                 if ($this->positie[$i][0] == $hor && $this->positie[$i][1] == $ver) {
-                    echo " <BR>" . $this->naamSchip . " GERAAKT op positie " . $i;
+//                    echo " <BR>" . $this->naamSchip . " GERAAKT op positie " . $i;
                     $eruit = TRUE;
                     $this->geraakt = TRUE;
                 }

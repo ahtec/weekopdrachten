@@ -25,14 +25,20 @@ ga naar schieten html
                 document.location = locationRegel;
 //                alert();
             }
+
+            function verslagVanDeBom(verslagTxt) {
+                alert(verslagTxt);
+            }
+
+
         </script>
+
+
 
 
     </head>
     <body>
 
-
-        <!--<form action=zeeslag.php method=GET  >-->
         <?php
         require_once 'schip.php';
 
@@ -42,20 +48,12 @@ ga naar schieten html
 //            if ($var1 == 0) {
         $schipID = -1;
 
-        $naamFileMetSerializedData = 'alleSchepen.txt';
+        $naamFileMetSerializedData = 'alleSchepenGeserialixed.txt';
         if (file_exists($naamFileMetSerializedData)) {
-            echo "In het eerste deel";
             $serializeData = file_get_contents($naamFileMetSerializedData);
             $alleSchepen = unserialize($serializeData);
         } else {
-//            $schip2 = new schip(array(array(10, 20), array(10, 21), array(10, 22), array(10, 23), array(10, 24), array(10, 25), array(10, 26), array(10, 27)), "De Kareldoorman");
-//            $schip3 = new schip(array(array(10, 5), array(11, 5), array(12, 5)), "De Walrus");
-//            $schip1 = new schip(array(array(22, 10), array(22, 11), array(22, 12), array(22, 13), array(22, 14), array(22, 15), array(22, 16), array(22, 17)), "De Ruyter");
-//            $schip1 = new schip(array(array(30, 10), array(30, 11), array(30, 12), array(30, 13), array(30, 14), array(30, 15), array(30, 16), array(30, 17)), "De Zeven provincien");
-//            $alleSchepen = array($schip1, $schip2, $schip3);
-//            include_once  'opbouwSchepen.txt';
             $alleSchepen = opbouwAlleSchepen();
-
             $serializeData = serialize($alleSchepen);
             file_put_contents($naamFileMetSerializedData, $serializeData);
         }
@@ -73,8 +71,8 @@ ga naar schieten html
 //        deze php is aangeroepen met bom coordinaten
 //         aanroep per schip of het schip geraakt is
 //        als dan  wordt voor dat schip  de "geraakt" variabele op waar gezet t
-        $schipID = bomsAwayOp($_GET['xCoordinaat'], $_GET['yCoordinaat'], $alleSchepen);
-
+        $verslag = bomsAwayOp($_GET['xCoordinaat'], $_GET['yCoordinaat'], $alleSchepen);
+       echo "<script type='text/javascript'>alert('$verslag');</script>";
 //        De gegevens worden geserialized en daarmee bewaard
 
         $serializeData = serialize($alleSchepen);
@@ -84,16 +82,18 @@ ga naar schieten html
     }
 
     function bomsAwayOp($hor, $ver, $param_alleSchepen) {
-        echo "<br> <br>Bommen op positie : " . $hor . " " . $ver;
+        $verslag = "";
+//        echo "<br> <br>Bommen op positie : " . $hor . " " . $ver;
         for ($i = 0; $i < count($param_alleSchepen); $i++) {
             if ($param_alleSchepen[$i]->geraakt == FALSE) {
                 if ($param_alleSchepen[$i]->benIkGeraakt($hor, $ver)) {
-                    
+                    $verslag = $verslag . "   " . $param_alleSchepen[$i]->naamSchip . " GERAAKT  ";
                 } else {
-                    echo "<br>   " . $param_alleSchepen[$i]->naamSchip . " niet geraakt ";
+                    $verslag = $verslag . "  " . $param_alleSchepen[$i]->naamSchip . " niet geraakt ";
                 }
             }
         }
+        return $verslag;
     }
 
     function welkSchipLigtHier($hor, $ver, $param_alleSchepen) {
