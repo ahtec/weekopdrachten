@@ -42,11 +42,7 @@ ga naar schieten html
         <?php
         require_once 'schip.php';
 
-//            echo count($_GET);
-//            $var1 = count($_GET);
-//            echo $var1;
-//            if ($var1 == 0) {
-        $schipID = -1;
+//        $schipID = -1;
 
         $naamFileMetSerializedData = 'alleSchepenGeserialixed.txt';
         if (file_exists($naamFileMetSerializedData)) {
@@ -63,7 +59,7 @@ ga naar schieten html
         }
         ?>
 
-    </body>
+  
     <?php
     $var2 = count($_GET);
 //    echo $var2;
@@ -73,6 +69,7 @@ ga naar schieten html
 //        als dan  wordt voor dat schip  de "geraakt" variabele op waar gezet t
         $verslag = bomsAwayOp($_GET['xCoordinaat'], $_GET['yCoordinaat'], $alleSchepen);
        echo "<script type='text/javascript'>alert('$verslag');</script>";
+       
 //        De gegevens worden geserialized en daarmee bewaard
 
         $serializeData = serialize($alleSchepen);
@@ -87,9 +84,9 @@ ga naar schieten html
         for ($i = 0; $i < count($param_alleSchepen); $i++) {
             if ($param_alleSchepen[$i]->geraakt == FALSE) {
                 if ($param_alleSchepen[$i]->benIkGeraakt($hor, $ver)) {
-                    $verslag = $verslag . "   " . $param_alleSchepen[$i]->naamSchip . " GERAAKT  ";
+                    $verslag = $verslag .  $param_alleSchepen[$i]->naamSchip . " GERAAKT \\n ";
                 } else {
-                    $verslag = $verslag . "  " . $param_alleSchepen[$i]->naamSchip . " niet geraakt ";
+                    $verslag = $verslag .  $param_alleSchepen[$i]->naamSchip . " niet geraakt\\n ";
                 }
             }
         }
@@ -115,6 +112,7 @@ ga naar schieten html
             for ($x = 1; $x < 50; $x++) {   //colommen
                 $schipID = welkSchipLigtHier($x, $y, $param_alleSchepen);
                 if ($schipID >= 0) {
+//werkt niet                    echo '<td onclick="directeVerwijzing(' . $x . '  ,  ' . $y . ' )"><div id="idHierLigtEenSchip"> <p><a HREF= " href" TITLE="TITEL" ></a> </p></div></td>';
                     echo '<td onclick="directeVerwijzing(' . $x . '  ,  ' . $y . ' )"><div id="idHierLigtEenSchip"></div></td>';
                 } else {
                     echo '<td onclick="directeVerwijzing(' . $x . '  ,  ' . $y . ')"><div id="idHierLigtGeenSchip"></div></td>';
@@ -135,5 +133,5 @@ ga naar schieten html
         return $eruit;
     }
     ?>
-
+  </body>
 </html>
