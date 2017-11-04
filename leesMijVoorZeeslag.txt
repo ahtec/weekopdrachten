@@ -1,0 +1,10 @@
+start met startZeeslag.html
+geef daar schepen in
+
+er is een button voor start zeeslag
+en voor herstellen gezonken schepen
+
+er zitten helaas en harde verwijzing in, 
+ header("Location: http://localhost/weekopdrachten/startzeeslag.html");
+dus dat geeft met testen wat aanpassingen
+ 

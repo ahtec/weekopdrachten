@@ -42,7 +42,6 @@ ga naar schieten html
         <?php
         require_once 'schip.php';
 
-//        $schipID = -1;
 
         $naamFileMetSerializedData = 'alleSchepenGeserialixed.txt';
         if (file_exists($naamFileMetSerializedData)) {
@@ -106,6 +105,8 @@ ga naar schieten html
     }
 
     function schermOpbouw($param_alleSchepen) {
+        
+        
         echo "        <table>";
         for ($y = 1; $y < 50; $y++) {  ///rijen
             echo"<tr>";

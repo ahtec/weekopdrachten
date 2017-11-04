@@ -14,4 +14,11 @@ if (file_exists($naamFileMetSerializedData)) {
     $serializeData = serialize($alleSchepen);
     file_put_contents($naamFileMetSerializedData, $serializeData);
 }
+$verslag = "Schepen zijn weer hersteld";
+//      echo "<script type='text/javascript'>alert(Schepen zijn weer hersteld);</script>";
+echo "<script type='text/javascript'>alert('$verslag');</script>";
+
+
+header("Location: http://localhost/weekopdrachten/startzeeslag.html");
+//exit;
 ?>
