@@ -10,29 +10,35 @@ and open the template in the editor.
         <title>Zeeslag  invoer schepen</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      
+
     </head>
     <body STYLE="font-size: 20px; font-family:Courier New, Courier, monospace;">
         <h4>  Op dit scherm kunt u schepen toevoegen</h4>
         <hr>
         <h5> U kunt schepen horizontaal of vertikaal ingeven, horizontaal is: dat de eerste en de laatste horizontale positie hetzelfde zijn, voor een vertikaal schip zijn dat de eerste en laatste vertikale positie</h5>
-       <hr>
+        <hr>
         <form name="voegschiptoe" action="voegSchipToe.php">
             <table>
-            <tr> <td> Naam van het schip            </td> <td>  <input type="text" name="schipnaam" value="type naam schip">  </td>
-            <tr> <td> Eerste Positie horizontaal    </td> <td>  <input type="text" name="x1" value="10"></td>
-            <tr> <td> Eerste Positie vertikaal      </td> <td>  <input type="text" name="y1" value="10"></td>
-            <tr> <td> Laatste Positie horizontaal   </td> <td>  <input type="text" name="x2" value="10"></td>
-            <tr> <td> Laatste Positie vertikaal     </td> <td>  <input type="text" name="y2" value="15"></td>
+                <tr> <td> Naam van het schip            </td> <td>  <input type="text" name="schipnaam" value="type naam schip">  </td>
+                <tr> <td> Eerste Positie horizontaal    </td> <td>  <input type="text" name="x1" value="10"></td>
+                <tr> <td> Eerste Positie vertikaal      </td> <td>  <input type="text" name="y1" value="10"></td>
+                <tr> <td> Laatste Positie horizontaal   </td> <td>  <input type="text" name="x2" value="10"></td>
+                <tr> <td> Laatste Positie vertikaal     </td> <td>  <input type="text" name="y2" value="15"></td>
             </table>
-         <br>
-           
+            <br>
+
             <br><br>
             <input type="submit" value="Genereer schip">
         </form>   
 
 
+        <form name="speelZeeslag" action="zeeslag.php">
+            <input type="submit" value="Start zeeslag">
+        </form>
 
+        <form name="speelZeeslag" action="repareerAlleSchepen.php">
+            <input type="submit" value="Haal alle gezonken schepen weer bover water">
+        </form>
 
 
 
