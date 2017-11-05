@@ -10,7 +10,51 @@ and open the template in the editor.
         <title>Zeeslag  invoer schepen</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
 
+            function validate(form) {
+                fail = validateSchipnaam(form.schipnaam.value)
+                fail += validateCoordinaten(
+                        form.x1.value,
+                        form.y1.value,
+                        form.x2.value,
+                        form.y2.value)
+                if (fail == "")
+                    return true
+                else {
+                    alert(fail);
+                    return false
+                }
+
+            }
+
+            function validateSchipnaam(field)
+            {
+                return (field == "") ? "Vul naam schip in\n" : ""
+            }
+
+            function validateCoordinaten(
+                    fieldX1,
+                    fieldY1,
+                    fieldX2,
+                    fieldY2)
+            {
+                eruit ="";
+
+                if ((fieldX1 != fieldX2) && (fieldY1 != fieldY2)) {
+
+                    eruit = "U kunt schepen horizontaal of vertikaal ingeven, \n\
+horizontaal is: \n dat de eerste en de laatste horizontale positie hetzelfde zijn, \n\
+\nvoor een vertikaal schip zijn dat de eerste en laatste vertikale positie.\n";
+                } else {
+                    if ((fieldX1 > fieldX2) || (fieldY1 > fieldY2)) {
+                        eruit = "Eerste coordinaat mag niet groter zijn dan tweede coordinaat";
+                    }
+                }
+                return (eruit);
+            }
+
+        </script>
     </head>
     <body STYLE="font-size: 20px; font-family:Courier New, Courier, monospace;">
         <h4>  Op dit scherm kunt u schepen toevoegen</h4>
@@ -19,12 +63,12 @@ and open the template in the editor.
             laatste horizontale positie hetzelfde zijn, voor een vertikaal schip zijn dat de
             eerste en laatste vertikale positie. Op dit moment is de grootte van de zee 50 X  50.
             Dus schepen daarbuiten worden overgeslagen
-        
+
         </h5>
         <hr>
-        <form name="voegschiptoe" action="voegSchipToe.php">
+        <form name="voegschiptoe" action="voegSchipToe.php" onsubmit="return validate(this)">
             <table>
-                <tr> <td> Naam van het schip            </td> <td>  <input type="text" name="schipnaam" value="type naam schip">  </td>
+                <tr> <td> Naam van het schip            </td> <td>  <input type="text" name="schipnaam" value="">  </td>
                 <tr> <td> Eerste Positie horizontaal    </td> <td>  <input type="text" name="x1" value="10"></td>
                 <tr> <td> Eerste Positie vertikaal      </td> <td>  <input type="text" name="y1" value="10"></td>
                 <tr> <td> Laatste Positie horizontaal   </td> <td>  <input type="text" name="x2" value="10"></td>
