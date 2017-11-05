@@ -19,6 +19,8 @@ $verslag = "Schepen zijn weer hersteld";
 echo "<script type='text/javascript'>alert('$verslag');</script>";
 
 
+//header("Location: http://localhost/weekopdrachten/startzeeslag.html");
+
 header("Location: http://localhost/weekopdrachten/startzeeslag.html");
 //exit;
 ?>

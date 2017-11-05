@@ -2,8 +2,16 @@
 
 /**
  * Description of schip
+ *  schip heeft de eigenschappen 
+ * positie  is ee 2dim array met coordinaten 
+ * 0 = de xcoordinaat 
+ * 1 de ycoordinaat
+ * hierdoor kan het schip elke vorm hebben en zefls in delen liggen 
+ * naam  string
+ * geraakt boolean 
  * 
- * @author SGerard Doets
+ * 
+ * @author Gerard Doets
  */
 
    
@@ -34,7 +42,6 @@
             $eruit = FALSE;
             for ($i = 0; $i < count($this->positie); $i++) {
                 if ($this->positie[$i][0] == $hor && $this->positie[$i][1] == $ver) {
-//                    echo " <BR>" . $this->naamSchip . " GERAAKT op positie " . $i;
                     $eruit = TRUE;
                     $this->geraakt = TRUE;
                 }

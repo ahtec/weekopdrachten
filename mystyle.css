@@ -4,15 +4,17 @@ body { font-family: 'courier';}
 
 
 div{  
-    width:15px; 
+    width:10px; 
     display:block;
     height:10px;
-    background-color:  cornsilk;
-    border: 0px solid black;
+    background-color:  white;
+    border: 0px solid cornsilk;
+    border-spacing: 0px
+    
 }
 
 div#idHierLigtEenSchip{  
-    width:15px; 
+    width:10px; 
     display:block;
     height:10px;
     background-color: black;
@@ -21,7 +23,13 @@ div#idHierLigtEenSchip{
 
 table {
     border: 5px solid ghostwhite;
+    border-spacing: 0px;
 }
+
+
+td {border-spacing: 0px;
+}
+
 
 .button {
     background-color: #e7e7e7; color: blue;

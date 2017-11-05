@@ -1,9 +1,9 @@
 <!-----
 fo
 
-teken eerst invoer html voor schepen  |  todo
+teken eerst invoer html voor schepen  
 
-voer schepen in     |todo
+voer schepen in     
 als je klaar bent met schepen invoeren
 
 ga naar schieten html
@@ -33,9 +33,6 @@ ga naar schieten html
 
         </script>
 
-
-
-
     </head>
     <body>
 
@@ -56,6 +53,7 @@ ga naar schieten html
         if (count($_GET) == 0) {
             schermOpBouw($alleSchepen);
         }
+       
         ?>
 
   
@@ -63,9 +61,9 @@ ga naar schieten html
     $var2 = count($_GET);
 //    echo $var2;
     if ($var2 == 2) {
-//        deze php is aangeroepen met bom coordinaten
+//        nu is deze php is aangeroepen met bom coordinaten
 //         aanroep per schip of het schip geraakt is
-//        als dan  wordt voor dat schip  de "geraakt" variabele op waar gezet t
+//        als dan  wordt voor dat schip  de "geraakt" variabele op WAAR gezet 
         $verslag = bomsAwayOp($_GET['xCoordinaat'], $_GET['yCoordinaat'], $alleSchepen);
        echo "<script type='text/javascript'>alert('$verslag');</script>";
        
@@ -107,7 +105,7 @@ ga naar schieten html
     function schermOpbouw($param_alleSchepen) {
         
         
-        echo "        <table>";
+        echo "<table>";
         for ($y = 1; $y < 50; $y++) {  ///rijen
             echo"<tr>";
             for ($x = 1; $x < 50; $x++) {   //colommen
@@ -134,5 +132,11 @@ ga naar schieten html
         return $eruit;
     }
     ?>
+        
+        
+         <form align="middle" action="startZeeslag.html" action="GET">
+             <input type=submit value="Terug naar beginscherm"  >
+        </form>
+        
   </body>
 </html>

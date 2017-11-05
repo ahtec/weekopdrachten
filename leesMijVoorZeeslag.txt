@@ -1,10 +1,29 @@
-start met startZeeslag.html
-geef daar schepen in
 
-er is een button voor start zeeslag
-en voor herstellen gezonken schepen
+beginscherm is :  startZeeslag.html
+
+geef daar 1 of meer schepen in 
+als je daar geen zin in hebt : start dan meteen de zeeslag dan krijg je 4 schepen
+
+er is een button: voor start zeeslag
+                  herstellen gezonken schepen
 
 er zitten helaas en harde verwijzing in, 
+geen probleem als geimplementeerd op server, denk ik
+maar voor testen is het een beetje jammer
+
  header("Location: http://localhost/weekopdrachten/startzeeslag.html");
-dus dat geeft met testen wat aanpassingen
+
+dus dat geeft met testen wat aanpassingen   
  
+Verder: het dynamisch maken van de grootte van de zee (afhankelijk van de plaats van de schepen ) 
+        en het schuin plaatsen van schepen ( kan nu alleen hor of ver)
+               maar dit is meer van hetzelfde dus nu nog maar niet gedaan.
+ 
+        Als laatste improvement zou ik de harde verwijzing dr uit moeten halen.
+
+Mogelijk vervolg:
+Het is mogelijk in te bouwen 
+    dat het schip op verschillen de plaatsen geraakt moet worder om te zinken
+    dat het schip zich verplaatst(vaart)
+    dat de schepen niet meer zichtbaar zijn zodat het echt op zeeslag lijkt
+    de breedte van de schepen aan te passen.
