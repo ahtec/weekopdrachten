@@ -105,7 +105,7 @@ ga naar schieten html
     function schermOpbouw($param_alleSchepen) {
         
         
-        echo "<table>";
+        echo "<p><table>";
         for ($y = 1; $y < 50; $y++) {  ///rijen
             echo"<tr>";
             for ($x = 1; $x < 50; $x++) {   //colommen
@@ -117,9 +117,9 @@ ga naar schieten html
                     echo '<td onclick="directeVerwijzing(' . $x . '  ,  ' . $y . ')"><div id="idHierLigtGeenSchip"></div></td>';
                 }
             }
-            echo"</tr>";
+            echo"</tr>\n";
         }
-        echo '</table>';
+        echo '</table></p>';
     }
 
     function opbouwAlleSchepen() {
